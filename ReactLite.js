@@ -173,6 +173,7 @@ function performUnitOfWork(fiber) {
  * 更新原生组件
  */
 function updateHostComponent(fiber) {
+  // 首次渲染
   if (!fiber.dom) {
     fiber.dom = createDom(fiber);
   }
@@ -271,7 +272,7 @@ function useState(initialValue) {
   });
 
   const setState = (action) => {
-    hook.queue.push(action);
+    hook.queue.push(typeof action === 'function' ? action : () => action);
     // 设置一个新的正在进行的工作根作为下一个工作单元
     // 这样工作循环就可以开始一个新的渲染阶段。
     wipRoot = {
