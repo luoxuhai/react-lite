@@ -4,8 +4,21 @@ import * as ReactLite from './ReactLite';
 function App() {
   return (
     <div>
+      <div>xcxcxc</div>
+      <p>cedefefr</p>
+      <div style="color: red">
+        <CounterPure />
+      </div>
       <Counter />
       <Input />
+    </div>
+  );
+}
+
+function CounterPure() {
+  return (
+    <div>
+      <h1>Count</h1>
     </div>
   );
 }
@@ -30,7 +43,7 @@ function Input() {
       <input
         value={state}
         onInput={(value) => {
-          setState(() => value.target.value);
+          setState(value.target.value);
         }}
       />
     </div>
